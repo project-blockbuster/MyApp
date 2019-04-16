@@ -1,0 +1,130 @@
+http://somebank.com/getAccountSummary?accountNo=123456
+
+http://somebank.com/accountinfo?accountNo=1234567
+
+http://somebank.com/contactinfo?accountNo=1234567
+
+http://somebank.com/loan?accountNo=1234567
+
+bank_acctsummary_v2.war
+bank_acctInfo.war
+bank_loan.war
+
+ TOMCAT 1 bank_acctsummary_v2.war DOWN
+ TOMCAT 2 bank_acctInfo.war
+ TOMCAT 3 bank_loan.war
+
+bankapp.war
+
+PUT WAR INTO VM WHICH HAS A TOMCAT SERVER RUNNING
+
+acct.java
+getAccountSummary(){
+	csdvdjvbhdbcjkadsnckjadndk
+	djvndjvjkdsnvkjdsvkd
+	scscdvcdvdsvdvdvddv
+}
+
+getAccountInfo(){
+}
+
+contact.java
+getContactInfo(){
+}
+
+loan(){
+}
+
+
+
+
+
+
+
+
+A P I
+http://somebank.com/getAccountSummary?accountNo=123456
+
+BANK APPLICATION
+
+
+
+
+
+
+
+
+
+
+
+A
+API = http://somebank.com/getAccountSummary?accountNo=123456
+Name: Tom
+Age: 30
+PAN: AAKHH9983
+BALANCE: 10,00,00,000
+
+B
+API = http://somebank.com/accountinfo?accountNo=1234567
+
+Name: Tom
+Age: 30
+PAN: AAKHH9983
+
+A
+getAccountSummary(Parameters){
+   int accountNo = parameters.get("accountNo")
+   accountInfo = http("http://somebank.com/accountinfo?accountNo=1234567");
+}
+
+testGetAccountSummary(Parameters){
+   int accountNo = parameters.get("accountNo")
+   accountInfo = getAccountSummary(dummyResponse)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+util.java
+
+public int add(int a,int b){
+        return a-b;
+}
+
+
+Print ( add(10,15) )  // 25
+
+
+
+UtilTest.java
+public void testAdd(){
+   expectedOutPut = 25
+   inputA = 10
+   inputB = 15
+   
+   assert( 25 , add (inputA,inputB) ) //Fail
+   
+}
+
+
+yum install git
+yum install maven

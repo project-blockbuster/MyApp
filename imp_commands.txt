@@ -1,0 +1,554 @@
+git init
+git add
+git commit
+git config
+git clone
+git push
+git rebase
+git checkout
+get branch
+git merge
+git amend
+git status
+git log
+git remote
+git diff
+
+Scenario 1
+
+Customer has a requirement 
+
+Developer makes Change for the feature tests and deploys
+
+The change appears in Production
+
+The customer is not happy with the change 
+
+The developer makes the change again to remove the feature and pushes the code to production.
+
+The customer now changes his mind she wants the change back.
+
+The developer has to make the change again and deploy it to production.
+
+mkdir testrepo
+git init
+vi test.txt
+in the file add "THIS IS A SAMPLE TEXT"
+
+git add test.txt
+git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   test.txt
+
+vi test.txt
+Again in the file add "THIS IS A SECOND SAMPLE TEXT"
+
+
+git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   test.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   test.txt
+
+As we can see we have staged and unstaged file.
+
+git commit -m "new file"
+[master c53e75f] new file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test.txt
+
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   test.txt
+
+git commit -m "new file"
+[master 15c629a] new file
+ 1 file changed, 1 insertion(+)
+ 
+git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+nothing to commit, working tree clean
+
+git push origin master
+Username for 'https://github.com': project-blockbuster
+Counting objects: 6, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 549 bytes | 0 bytes/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To https://github.com/project-blockbuster/webapplication.git
+   5bdbacf..15c629a  master -> master
+   
+
+To push code to remote repo add a folder in github
+
+The copy url and add the remote repo in local
+git remote add testdemorepo https://github.com/project-blockbuster/testrepo.git
+
+git push testdemorepo master
+Username for 'https://github.com': project-blockbuster
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 253 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/project-blockbuster/testrepo.git
+ * [new branch]      master -> master
+ 
+
+ git remote -v
+ git remote add origin https://github.com/project-blockbuster/demorepo.git
+ 
+ list all branch 
+ git branch
+ 
+ 
+ vi test.txt
+ added line number 1
+ added line number 2
+ added line number 3
+ 
+ 
+ 136122@LT088558 MINGW32 ~/webapplication (master)
+$ git add test.txt
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory.
+
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git remote -v
+origin  https://github.com/project-blockbuster/webapplication.git (fetch)
+origin  https://github.com/project-blockbuster/webapplication.git (push)
+
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git commit -m "added a file"
+[master 4d6d0a9] added a file
+ 1 file changed, 2 insertions(+)
+
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git push origin master
+Username for 'https://github.com': project-blockbuster
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 317 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/project-blockbuster/webapplication.git
+   15c629a..4d6d0a9  master -> master
+   
+
+   
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git checkout -b BRANCH22
+Switched to a new branch 'BRANCH22'
+
+136122@LT088558 MINGW32 ~/webapplication (BRANCH22)
+$ vi test.txt
+
+vi test.txt
+ added line number 1
+ added line number 2
+ added line number 3
+ added line number 4
+
+136122@LT088558 MINGW32 ~/webapplication (BRANCH22)
+$ git add test.txt
+warning: LF will be replaced by CRLF in test.txt.
+The file will have its original line endings in your working directory.
+
+136122@LT088558 MINGW32 ~/webapplication (BRANCH22)
+$ git commit -m "added a file"
+[BRANCH22 71db02e] added a file
+ 1 file changed, 1 insertion(+)
+
+136122@LT088558 MINGW32 ~/webapplication (BRANCH22)
+$ git push origin BRANCH22
+Username for 'https://github.com': project-blockbuster
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 321 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create a pull request for 'BRANCH22' on GitHub by visiting:
+remote:      https://github.com/project-blockbuster/webapplication/pull/new/BRANCH22
+remote:
+To https://github.com/project-blockbuster/webapplication.git
+ * [new branch]      BRANCH22 -> BRANCH22
+ 
+ 
+
+vi test.txt
+ added line number 1
+ added line number 2
+ added line number 3
+ added line number 5
+ added line number 6
+ added line number 7
+ added line number 8 
+
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git add test.txt
+
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git commit -m "added more lines"
+[master 13678cf] added more lines
+ 1 file changed, 4 insertions(+)
+
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git push origin master
+Username for 'https://github.com': project-blockbuster
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 333 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/project-blockbuster/webapplication.git
+   4d6d0a9..13678cf  master -> master 
+ 
+136122@LT088558 MINGW32 ~/webapplication (master|MERGING)
+$ git merge BRANCH22
+error: Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+
+136122@LT088558 MINGW32 ~/webapplication (master|MERGING)
+$ vi test.txt
+
+136122@LT088558 MINGW32 ~/webapplication (master|MERGING)
+$ git add test.txt
+
+136122@LT088558 MINGW32 ~/webapplication (master|MERGING)
+$ git merge BRANCH22
+fatal: You have not concluded your merge (MERGE_HEAD exists).
+Please, commit your changes before you merge.
+
+136122@LT088558 MINGW32 ~/webapplication (master|MERGING)
+$ git commit -m "merging"
+[master 3c93c7e] merging
+
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git push origin master
+Username for 'https://github.com': project-blockbuster
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 335 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/project-blockbuster/webapplication.git
+   13678cf..3c93c7e  master -> master
+   
+136122@LT088558 MINGW32 ~/webapplication (BRANCH22)
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Fast-forwarded BRANCH22 to master.
+
+
+ 
+https://pkg.jenkins.io/redhat-stable/
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+
+IMP XXX https://www.linuxtechi.com/install-configure-jenkins-on-centos-7-rhel-7/
+
+
+$ git config --global user.name "Jitendra Alluru"
+
+git config --list
+core.symlinks=true
+core.autocrlf=true
+core.fscache=true
+color.diff=auto
+color.status=auto
+color.branch=auto
+color.interactive=true
+help.format=html
+diff.astextplain.textconv=astextplain
+rebase.autosquash=true
+http.sslverify=false
+user.name=Jitendra Alluru
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=ssh://git@stash.dev-charter.net:7999/fi/unified-federatedauthn-middle.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.develop.remote=origin
+branch.develop.merge=refs/heads/develop
+
+
+$ git config user.email
+jitendra.a@edureka.com
+
+
+git config --list
+
+core.symlinks=true
+core.autocrlf=true
+core.fscache=true
+color.diff=auto
+color.status=auto
+color.branch=auto
+color.interactive=true
+help.format=html
+diff.astextplain.textconv=astextplain
+rebase.autosquash=true
+http.sslverify=false
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=ssh://git@stash.dev-charter.net:7999/fi/unified-federatedauthn-middle.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.develop.remote=origin
+branch.develop.merge=refs/heads/develop
+
+
+
+echo "# webapplication" >> README.md
+git add README.md
+git commit -m "Added readme"
+git push origin master
+
+echo "MADE MORE CHANGES" >> README.md
+git add README.md
+git commit -m "Added readme"
+git push origin master
+
+
+git checkout -b "CR-22"
+echo "MADE SOME MORE CHANGES" >> README.md
+git add README.md
+git commit -m "made readme changes"
+
+git checkout master
+git pull master
+
+git checkout origin CR-22
+git pull CR-22
+
+
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: made readme changes
+Using index info to reconstruct a base tree...
+M       README.md
+Falling back to patching base and 3-way merge...
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+error: Failed to merge in the changes.
+
+
+# webapplication
+<<<<<<< HEAD
+I MADE CHANGE IN MASTER
+=======
+ADDED SOME MORE CHANgeS
+>>>>>>> made readme changes
+
+ 
+# webapplication
+ADDED SOME MORE CHANgeS
+
+
+
+wq!
+
+136122@LT088558 MINGW32 ~/webapplication (CR-22|REBASE 1/1)
+$ git add README.md
+
+136122@LT088558 MINGW32 ~/webapplication (CR-22|REBASE 1/1)
+$ git rebase --continue
+Applying: made readme changes
+
+136122@LT088558 MINGW32 ~/webapplication (CR-22)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git merge CR-22
+Updating 109ac25..5bdbacf
+Fast-forward
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ 
+ 
+136122@LT088558 MINGW32 ~/webapplication (master)
+$ git push
+Username for 'https://github.com': project-blockbuster
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 290 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/project-blockbuster/webapplication.git
+   109ac25..5bdbacf  master -> master 
+   
+   
+ Write code for Development Environment not identical to Production Environment
+ wait weeks to push code into production
+ Challenging for developer because he has old code, new code, new features , new products
+ 
+ When code is finally deployed into production environment there is unforseen dependency error.
+ Because code is written in dev environment and not production
+ 
+ System Administrator responsible for maintaining 99.9% up time
+ No of servers needed to be administrated is constantly growing
+ More servers increase the challenge of how the code needs to be deployed in PRD environment
+ To put the code in production it generally always required little massaging so the deployment never used to happen frequently
+ After the code is deployed the ops team is responsible for any errors caused by the deployed software
+ 
+ How to make them work together
+ 
+ Devops allows developer and operations team to work together by better collaboration and productivity by
+ AUtomating things like automating infra, aiutomating the workflows and continously measuring the system performance
+ 
+ Now developer writes software in small chunks (new featuresm,bugfixes) which can be deployed in hours rather than
+ traditional way of writing software where a large chunk of software is written and wait for weeks to deployed
+ 
+ than Week of testing
+ 
+ Writing small chunks of code improves time to deploy and frequency to deploy new features
+ 
+ 
+ 
+ yum install java
+ /bin/java
+ 
+ yum install maven
+ /bin/mvn
+ 
+ yum install git
+ /bin/git
+ 
+ JAVAHOME, MAVEN HOME and GIT EXECUTABLE PATH
+ http://ec2-34-221-200-12.us-west-2.compute.amazonaws.com:8080/configureTools/
+ 
+
+
+ EC2 PASSWORD LOGIN
+ https://aws.amazon.com/premiumsupport/knowledge-center/ec2-password-login/
+ 
+ 
+ JENKINS DOWNLOAD
+ https://jenkins.io/download/
+ 
+ 
+ 
+ -aG docker centos
+ echo "Current date is $(date)"
+ 
+ docker exec -it containername bash
+ 
+ Variables 
+ NAME=Jitendra
+ echo $NAME
+ Jitendra
+ 
+ echo "Hello $NAME, Current date and time is $(date)"
+ 
+ Redirection to file
+ echo "Hello $NAME, Current date and time is $(date)" /tmp/info
+ 
+ **** Remember username and password for linux in AWS
+ 
+ vi script.sh
+ #!/bin/bash
+ echo Hello, $FIRSTNAME $LASTNAME
+ 
+ execute this script i will have an error
+ 
+ chmod +x script.sh
+ 
+ ./script.sh
+ Hello,
+ 
+ ./script.sh Jitendra A
+ 
+ #!/bin/bash
+ 
+ FIRSTNAME=$1
+ LASTNAME=$2
+ echo Hello, $FIRSTNAME $LASTNAME
+ 
+ Copy Files from local to container
+ 
+ docker cp script.sh demo_container:/tmp/script.sh
+ 
+ in Jenkins /tmp/script.sh Jitendra A
+ Jenkins took parameters from the shell and passed to script
+ 
+ How to we configure parameters rather than passing it to script commandline
+ 
+ Selete Parameters checkbox
+ 
+ String Params
+ List Params
+ Boolean params etc
+ 
+ For the example docker image In VM generate key
+ ssh-keygen -f remote-key
+ 
+ RUN useradd remote_user
+ RUN echo "1234" | passwd remote_user --stdin
+ RUN mkdir /home/remote_user/.ssh 
+ RUN chmod 700 /home/remote_user/.ssh
+ RUN remote-key.pub /home/remote_user/.ssh/authorized_keys
+ RUN chown remote_user:remote_user -R /home/remote_user/.ssh/
+ RUN chmod 600 /home/remote_user/.ssh/authorized_keys
+ RUN /usr/sbin/ssh-keygen
+ 
+ CMD /usr/bin/sshd -D
+ 
+ 
+ Publish Over SSH PLUGIN
+ 
+ Maven Integration
+ 
+ String name = getParameter("myName");
+ if ( name.startsWith("super") ){
+	System.out.println("THIS PERSON IS SUPERMAN");
+ }
+ 
+ if ( name.startsWith("iron") ){
+	System.out.println("THIS PERSON IS IRONMAN");
+ }
+ 
+ Central Repository For all dependencies
+ Universal Build System
+ Easy Build Process
+ Make new features easy
+ 
+ Model Version This is the maven pom version leave it as such
+ 
+ Group id is the identifier of the organization which is making of creating this build artifact(war,jar,tar,zip)
+ Artifactid this will be the name of the final build artifact. If id is somedemo it will be somedemo.jar
+ Version identifues is the version of this. SNAPSHOT indicates this is work in progress. id 0.0.0.1-SNAPSHOT
+ Packaging jar this will tell that this build will build a jar file of this build somedemo-0.0.0.1-SNAPSHOT.jar
+ 
+ Inheritance is available in POM. Give me everything from other POM and i will use or override them.
+ 
